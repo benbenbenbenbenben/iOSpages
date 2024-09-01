@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Position Cycling Demo</title>
+    <style>
+        :root {
+            height: 50vh;
+            border: 2px solid black;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h1>Position Cycling Demo</h1>
+        <p>Current position: <span id="current-position">static</span></p>
+    </div>
+    <button onclick="cyclePosition()">Cycle Position</button>
+
+    <script>
+        const positions = ['static', 'relative', 'absolute', 'fixed', 'sticky'];
+        let currentIndex = 0;
+
+        function cyclePosition() {
+            currentIndex = (currentIndex + 1) % positions.length;
+            const newPosition = positions[currentIndex];
+            document.documentElement.style.position = newPosition;
+            document.getElementById('current-position').textContent = newPosition;
+        }
+    </script>
+</body>
+</html>
